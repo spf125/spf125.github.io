@@ -7,22 +7,48 @@
 	<link rel="stylesheet"
 	href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css>
 	<style>
-		.button {
-			background-color: #4CAF50;
-			border: none;
-			color: white;
-			padding: 5px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 12px;
-			margin: 4px 2px;
-			cursor: pointer;
+		#response {
+			background-color: #0020beb2;
+			border-radius: 10px;
+			width: auto;
 		}
-		.round {border-radius: 8px;}
-		#response {background-color: #ff9800;}
+
+		.bg-1 {
+			background-color: #1abc9c; /* Green */
+			color: #ffffff;
+			position: relative;
+			border-radius: 10px;
+		}
+		.bg-2 {
+			background-color: #6f82ac; /* Dark Blue */
+			color: #ffffff;
+			border-radius: 10px;
+		}
+		.bg-3 {
+			background-color: #ffffff; /* White */
+			color: #555555;
+		}
+
+		.clock-wrapper {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			text-align: center;
+		}
+		#digital-clock {
+			margin-bottom: 10px;
+		}
+		.joke-card {
+			border-radius: 10px;
+			background-color: #ff9800;
+		}
+		.joke-card h5 {
+			margin-bottom: 15px;
+		}
+		
 	</style>
 </head>
+
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Project 1</a>
@@ -43,99 +69,95 @@
             </ul>
         </div>
     </nav>
-	<div class="container wrapper mt-4">
-		<div class="row">
-			<div class="col-md-8">
-				<div id="top">
-					<h1>Web Application Programming and Hacking</h1>
-					<h2>Front-end Web Development Lab</h2>
-					<h3>Instructor: Dr. Phu Phung</h3>
+	<div class="container-fluid">
+		<div class="bg-1 text-center">
+				<div id="menubar">
+					<h3>Simon Feist</h3>
+					<div id="email" onclick="showhideEmail()">Show my email</div>
+					<script src="email.js"></script>
+					<img src="images/Headshot.jpg" class="rounded-circle" alt="Headshot" width="150">
+					<h3>Computer Science Student</h3>
 				</div>
-				<div class="wrapper">
-					<div id="menubar">
-						<h3>Student: Simon Feist</h3>
-						<div id="email" onclick="showhideEmail()">Show my email</div>
-						<script src="email.js"></script>
-						<img src="images/Headshot.jpg" alt="My headshot" width="50">
-						<div id="digital-clock"></div>
-						<script>
-							function displayTime() {
-								document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
-							}
-							setInterval(displayTime, 500);
-						</script>
-						<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-						<script src="https://waph-uc.github.io/clock.js"></script>
-						<script>
+				<div class="clock-wrapper">
+					<div id="digital-clock"></div>
+					<script>
+						function displayTime() {
+							document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
+						}
+						setInterval(displayTime, 500);
+					</script>
+					<canvas id="analog-clock" width="150" height="150" style="background-color:#000000"></canvas>
+					<script src="https://waph-uc.github.io/clock.js"></script>
+					<script>
+						var canvas = document.getElementById("analog-clock");
+						var ctx = canvas.getContext("2d");
+						var radius = canvas.height / 2;
+						ctx.translate(radius, radius);
+						radius = radius * 0.90;
+						setInterval(drawClock, 1000);
 
-
-							var canvas = document.getElementById("analog-clock");
-							var ctx = canvas.getContext("2d");
-							var radius = canvas.height / 2;
-							ctx.translate(radius, radius);
-							radius = radius * 0.90;
-							setInterval(drawClock, 1000);
-
-							function drawClock() {
-								drawFace(ctx, radius);
-								drawNumbers(ctx, radius);
-								drawTime(ctx, radius);
-							}
-						</script>
-						<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-							integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-							crossorigin="anonymous"></script>
+						function drawClock() {
+							drawFace(ctx, radius);
+							drawNumbers(ctx, radius);
+							drawTime(ctx, radius);
+						}
+					</script>
+					<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+						integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+						crossorigin="anonymous"></script>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="card">
-						<img src="Headshot.jpg" class="card-img-top" alt="Headshot">
-						<div class=""card-body">
-							<h5 class="card-title">Simon Feist</h5>
-							<p class="card-text">Student in the WAPH course</p>
-							<a href="resume.html" class="btn btn-primary">View Resume</a>	
-						</div>
-					</div>
-				</div>
+		</div>
+		<div class="container-fluid text-center">
+			<div class="joke-card">
+				<h5>Programming Joke of the Day</h5>
+				<p id="joke"></p>
 			</div>
-			<div id="main" class="mt-4">
-				<p>A simple HTML page </p>
-				Using the <a href="https://www.w3schools.com/html"> W3Schools template</a>
-				<hr>
-				<b>Interaction with forms</b>
-				<div>
-					<i>Form with an HTTP GET Request</i>
-					<form action="/echo.php" method="GET" class="form-inline">
-						<div class="form-group mb-2">
-							<label for="HTTPGETRequest" class="sr-only">Your input:</label> 
-							<input type="text" class="form-control" id="HTTPGETRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
-						</div>
-						<button type="submit" class="btn btn-primary mb-2">Submit</button>
-					</form>
+		</div>
+		<div id="main" class="bg-2 text-center">
+			<div class="row">
+				<div class="col text-left pl-5">
+					<b>Interaction with forms</b>
+					<div>
+						<i>Form with an HTTP GET Request</i>
+						<form action="/echo.php" method="GET" class="form-inline">
+							<div class="form-group mb-2">
+								<label for="HTTPGETRequest" class="sr-only">Your input:</label> 
+								<input type="text" class="form-control" id="HTTPGETRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2 ml-2">Submit</button>
+						</form>
+					</div>
+					<div>
+						<i>Form with an HTTP POST Request</i>
+						<form action="/echo.php" method="POST" name="echo_post" class="form-inline">
+							<div class="form-group mb-2">
+								<label for="HTTPPOSTRequest" class="sr-only">Your input:</label> 
+								<input type="text" class="form-control" id="HTTPPOSTRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2 ml-2">Submit</button>
+						</form>
+					</div>
+					<div>
+						<i>Ajax requests</i><br>
+						<form class="form-inline">
+							<div class="form-group mb-2">
+								<label for="AjaxRequests" class="sr-only">Your input:</label>
+								<input type="text" onkeypress="console.log('You have pressed a key')" id="AjaxRequests" class="form-control" placeholder="Your Input">
+							</div>
+							<button class="btn btn-primary mb-2 ml-2" type="button"  onclick="getEcho()">Ajax Echo</button>
+							<button class="btn btn-primary mb-2 ml-2" type="button" onclick="jQueryAjax()">jQuery Ajax GET Echo</button>
+							<button class="btn btn-primary mb-2 ml-2" type="button" onclick="jQueryAjaxPost()">jQuery Ajax POST Echo</button>
+							<button class="btn btn-primary mb-2 ml-2" type="button" onclick="guessAge($('#AjaxRequests').val())">guess Age</button>
+						</form>
+					</div>
+					<div class="text-center" id="response">
+					</div>
 				</div>
-				<div>
-					<i>Form with an HTTP POST Request</i>
-					<form action="/echo.php" method="POST" name="echo_post" class="form-inline">
-						<div class="form-group mb-2">
-							<label for="HTTPPOSTRequest" class="sr-only">Your input:</label> 
-							<input type="text" class="form-control" id="HTTPPOSTRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
-						</div>
-						<button type="submit" class="btn btn-primary mb-2">Submit</button>
-					</form>
-				</div>
-				<div>
-					<i>Ajax requests</i><br>
-					<form class="form-inline">
-						<div class="form-group mb-2">
-							<label for="AjaxRequests" class="sr-only">Your input:</label>
-							<input type="text" onkeypress="console.log('You have pressed a key')" id="AjaxRequests" class="form-control" placeholder="Your Input">
-						</div>
-						<button class="btn btn-primary mb-2" type="button"  onclick="getEcho()">Ajax Echo</button>
-						<button class="btn btn-primary mb-2" type="button" onclick="jQueryAjax()">jQuery Ajax GET Echo</button>
-						<button class="btn btn-primary mb-2" type="button" onclick="jQueryAjaxPost()">jQuery Ajax POST Echo</button>
-						<button class="btn btn-primary mb-2" type="button" onclick="guessAge($('#AjaxRequests').val())">guess Age</button>
-					</form>
-					<div id="response"></div>
+				<div class="col">
+					<b>Experiements with JavaScript code</b><br>
+					<i>Inlined JavaScript</i>
+					<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
 				</div>
 				<script>
 					function encodeInput(input) {
@@ -189,7 +211,7 @@
 						function(result) {
 							if (result.joke.length == 0 || !result) return;
 							var joke = encodeInput(result.joke);
-							$("#response").html("A programming joke of the day: " + joke);
+							$("#joke").html(joke);
 						}
 					);
 
@@ -205,10 +227,6 @@
 					}
 
 				</script>
-				<hr>
-				<b>Experiements with JavaScript code</b><br>
-				<i>Inlined JavaScript</i>
-				<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
 			</div>
 		</div>
 	</div>
