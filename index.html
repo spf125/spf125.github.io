@@ -21,25 +21,10 @@
 	<link href="assets/css/main.css" rel="stylesheet">
 	<style>
 		#response {
-			background-color: #0020beb2;
+			background-color: #0563bbd0;
 			border-radius: 10px;
+			color: white;
 			width: auto;
-		}
-
-		.bg-1 {
-			background-color: #1abc9c; /* Green */
-			color: #ffffff;
-			position: relative;
-			border-radius: 10px;
-		}
-		.bg-2 {
-			background-color: #6f82ac; /* Dark Blue */
-			color: #ffffff;
-			border-radius: 10px;
-		}
-		.bg-3 {
-			background-color: #ffffff; /* White */
-			color: #555555;
 		}
 
 		.clock-wrapper {
@@ -65,21 +50,22 @@
 					<li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
 					<li><a href="#jokeoftheday"><i class="bi bi-emoji-laughing navicon"></i><span>Joke</span></a></li>
 					<li><a href="#clocks"><i class="bi bi-clock navicon"></i><span>Clocks</span></a></li>
+					<li><a href="#formsandJS"><i class="bi bi-pencil-square navicon"></i><span>Forms</span></a></li>
 					<li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
 					<li><a href="waph.html"><i class="bi bi-box-arrow-up-right navicon"></i><span>WAPH</span></a></li>
 				</ul>
 			</nav>
 	</header>
 
-	<main clas="main">
+	<main class="main">
 		<section id="hero" class="hero section">
-			<img src="images/Headshot.jpg" alt="Headshot">
+			<img src="images/Headshot.jpg" alt="Headshot" data-aos="zoom-out">
 			<div class="container" data-aos="zoom-out">
 				<div class="row justify-content-center">
 					<div class="col-lg-9 text-center">
-						<h3>Simon Feist</h3>
-						<p>Computer Science Student</p>
-						<div id="email" onclick="showhideEmail()">Show my email</div>
+						<h2>Simon Feist</h2>
+						<h3>Computer Science Student</h3>
+						<div id="email" onclick="showhideEmail()">Click to show my email</div>
 						<script src="email.js"></script>
 						
 						<script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -103,33 +89,35 @@
 				<p>Analog and digital clocks showcasing the use of internal and external JavaScript code.</p>
 			</div>
 			<div class="container" data-aos="fade-up" data-aos-delay="100">
-				<div id="digital-clock"></div>
+				<div id="digital-clock" class="digital-clock"></div>
 				<script>
 					function displayTime() {
 						document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
 					}
 					setInterval(displayTime, 500);
 				</script>
-				<canvas id="analog-clock" width="150" height="150" style="background-color:#000000"></canvas>
-				<script src="https://waph-uc.github.io/clock.js"></script>
-				<script>
-					var canvas = document.getElementById("analog-clock");
-					var ctx = canvas.getContext("2d");
-					var radius = canvas.height / 2;
-					ctx.translate(radius, radius);
-					radius = radius * 0.90;
-					setInterval(drawClock, 1000);
+				<div class="analog-clock">
+					<canvas id="analog-clock" width="150" height="150" style="background-color:#000000"></canvas>
+					<script src="https://waph-uc.github.io/clock.js"></script>
+					<script>
+						var canvas = document.getElementById("analog-clock");
+						var ctx = canvas.getContext("2d");
+						var radius = canvas.height / 2;
+						ctx.translate(radius, radius);
+						radius = radius * 0.90;
+						setInterval(drawClock, 1000);
 
-					function drawClock() {
-						drawFace(ctx, radius);
-						drawNumbers(ctx, radius);
-						drawTime(ctx, radius);
-					}
-				</script>
+						function drawClock() {
+							drawFace(ctx, radius);
+							drawNumbers(ctx, radius);
+							drawTime(ctx, radius);
+						}
+					</script>
+				</div>
 			</div>
 		</section>
 		
-		<section id="forms" class="forms-section">
+		<section id="formsandJS" class="formsandJS section">
 			<div class="container section-title" data-aos="fade-up">
 				<h2>Forms and JS</h2>
 				<p>Forms and JavaScript code including the use of JQuery.</p>
@@ -139,7 +127,7 @@
 					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
 						<h3>Interaction with forms</h3>
 
-						<div>
+						<div class="forms">
 							<h4>Form with an HTTP GET Request</h4>
 							<form action="/echo.php" method="GET" class="form-inline">
 								<div class="form-group mb-2">
@@ -164,10 +152,12 @@
 									<label for="AjaxRequests" class="sr-only">Your input:</label>
 									<input type="text" onkeypress="console.log('You have pressed a key')" id="AjaxRequests" class="form-control" placeholder="Your Input">
 								</div>
-								<button class="btn btn-primary mb-2 ml-2" type="button"  onclick="getEcho()">Ajax Echo</button>
-								<button class="btn btn-primary mb-2 ml-2" type="button" onclick="jQueryAjax()">jQuery Ajax GET Echo</button>
-								<button class="btn btn-primary mb-2 ml-2" type="button" onclick="jQueryAjaxPost()">jQuery Ajax POST Echo</button>
-								<button class="btn btn-primary mb-2 ml-2" type="button" onclick="guessAge($('#AjaxRequests').val())">guess Age</button>
+								<div class="col-lg-6 d-flex flex-wrap align-items-start justify-content-end">
+									<button class="btn btn-primary col-6" type="button"  onclick="getEcho()">Ajax Echo</button>
+									<button class="btn btn-primary col-6" type="button" onclick="guessAge($('#AjaxRequests').val())">guess Age</button>
+									<button class="btn btn-primary col-6" type="button" onclick="jQueryAjax()">jQuery Ajax GET Echo</button>
+									<button class="btn btn-primary col-6" type="button" onclick="jQueryAjaxPost()">jQuery Ajax POST Echo</button>
+								</div>
 							</form>
 						</div>
 						<div class="text-center" id="response">
@@ -175,9 +165,65 @@
 					</div>
 
 					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-						<h3>Experiements with JavaScript code</h3>
-						<h4>Inlined JavaScript</h4>
-						<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
+						<div class="JS">
+							<h3>Experiments with JavaScript code</h3>
+							<h4>Inlined JavaScript</h4>
+							<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="resume" class="resume section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Resume</h2>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+						<h3 class="resume-title">Education</h3>
+						<div class="resume-item pb-0">
+							<h4>University of Cincinnati</h4>
+							<p>Bachelor of Science, Computer Science</p>
+							<b>Graduating: May 2025</b>
+							<p>GPA: 3.8</p>
+						</div>
+
+						<h3 class="resume-title">Skills</h3>
+						<div class="resume-item">
+							<h4>Programming</h4>
+							<ul>
+								<li>C++</li>
+								<li>C#</li>
+								<li>MATLAB</li>
+								<li>Visual Basic</li>
+								<li>Perl</li>
+								<li>HTML</li>
+								<li>PHP</li>
+								<li>JavaScript</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+						<h3 class="resume-title">Experience</h3>
+						<div class="resume-item">
+							<h4>Software Development Engineer Co-op</h4>
+							<h5>Aug 2021 - Aug 2023</h5>
+							<p><em>Siemens Digital Industry Software</em></p>
+							<ul>
+								<li>Collaborated with another developer to update Perl scripts to increase the reliability of the scripts</li>
+								<li>Built unit tests to test software and ensure reliability of future software updates</li>
+								<li>Partnering with another co-op, worked on a Python script to alter 1000s of files at a time, reducing
+									the build time of an API compiler</li>
+								<li>Coded in C#, participating in the development of a program that ensures the reliability of future
+									versions of an app</li>
+								<li>Worked in C++ to create documentation of important information</li>
+								<li>Engaged in code reviews with product team and gained feedback from senior developers</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
