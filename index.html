@@ -59,10 +59,10 @@
 
 	<main class="main">
 		<section id="hero" class="hero section">
-			<img src="images/Headshot.jpg" alt="Headshot" data-aos="zoom-out">
 			<div class="container" data-aos="zoom-out">
 				<div class="row justify-content-center">
 					<div class="col-lg-9 text-center">
+						<img src="images/Headshot.jpg" alt="Headshot" class="rounded-circle" data-aos="zoom-out">
 						<h2>Simon Feist</h2>
 						<h3>Computer Science Student</h3>
 						<div id="email" onclick="showhideEmail()">Click to show my email</div>
@@ -76,14 +76,35 @@
 			</div>
 		</section>
 		
-		<section id="jokeoftheday" class="jokeoftheday section">
+		<section id="webapi" class="webapi section">
 			<div class="container section-title" data-aos="fade-up">
-				<h2>Joke of the Day</h2>
-				<p id="joke"></p>
+				<h2>Web API</h2>
+				<p>Web API calls to get a joke of the day and displays a comic.</p>
+				<b>
+					Dislaimer: The public/third-party services generate the generated contents below. I am not responsible for their contents.
+				</b>
+			</div>
+
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="row">
+					<div class="col-lg-6"  data-aos="fade-up" data-aos-delay="100">
+						<div class="jokeoftheday">	
+							<h3>Joke of the Day</h3>
+							<p id="joke"></p>
+						</div>
+					</div>
+					<div class="col-lg-6"  data-aos="fade-up" data-aos-delay="200">
+						<div class="xkcd">
+							<h3>XKCD Comic</h3>
+							<h4 id="xkcd-title"></h4>
+							<img id="xkcd-comic" src="" alt="XKCD Comic">
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		
-		<section id="clocks" class="clocks section">
+		<section id="twoclocks" class="twoclocks section">
 			<div class="container section-title" data-aos="fade-up">
 				<h2>Clocks</h2>
 				<p>Analog and digital clocks showcasing the use of internal and external JavaScript code.</p>
@@ -119,7 +140,7 @@
 		
 		<section id="formsandJS" class="formsandJS section">
 			<div class="container section-title" data-aos="fade-up">
-				<h2>Forms and JS</h2>
+				<h2>Forms and JavaScript</h2>
 				<p>Forms and JavaScript code including the use of JQuery.</p>
 			</div>
 			<div class="container">
@@ -307,14 +328,40 @@
 				);
 				$("#data").val("");
 			}
+			
+			function jokeOfTheDay() {
+				$.get("https://v2.jokeapi.dev/joke/Any",
+					function(result) {
+						if (result.error == false) {
+							if (result.type == "twopart") {
+								var setup = encodeInput(result.setup);
+								var delivery = encodeInput(result.delivery);
+								$("#joke").html(setup + "<br>" + delivery);
+							} else {
+								var joke = encodeInput(result.joke);
+								$("#joke").html(joke);
+							}
+						} else {
+							$("#joke").html("No joke available. Please try again later.");
+						}
+					}
+				);
+			}
 
-			$.get("https://v2.jokeapi.dev/joke/Programming?type=single",
-				function(result) {
-					if (result.joke.length == 0 || !result) return;
-					var joke = encodeInput(result.joke);
-					$("#joke").html(joke);
-				}
-			);
+			function XKCDComic() {
+				const corsProxy = "https://api.allorigins.win/get?url=";
+				const xkcdUrl = "https://xkcd.com/info.0.json";
+				$.get(corsProxy + xkcdUrl, function(result) {
+					if (!result || !result.img || !result.title) return;
+					$("#xkcd-comic").attr("src", result.img);
+					$("#xkcd-title").text(result.title);
+				});
+			}
+
+			XKCDComic();
+			jokeOfTheDay();
+
+			setInterval(jokeOfTheDay, 60000);
 
 			async function guessAge(name) {
 				if (name.length == 0) return;

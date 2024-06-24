@@ -2,37 +2,129 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>WAPH-Simon Feist</title>
+	<title>WAPH</title>
 	<link rel="stylesheet"
-	href=https://waph-uc.github.io/style1.css>
+	href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css>
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+	
+	<link href="assets/css/main.css" rel="stylesheet">
+	
 </head>
-<body>
-<div id="top">
-	<h1>Web Application Programming and Hacking</h1>
-	<h2>Front-end Web Development Lab</h2>
-</div>
-<div id="menubar">
-	<h3>Instructor</h3>
-	<h4>Dr. Phu Phung</h4>
-	<h3>Student</h3>
-	<h4>Simon Feist</h4>
-</div>
-<div id="main">
-	<h2> Course Information </h2>
-	<p> In this course, students will study basic web application development with front-end
-	(HTML5, JavaScript, CSS) and back-end (PHP/MySQL). Web application vulnerabilities and attacks will be introduced and explored with hands-on exercises on the range. Secure programming principles and
-	practices will be introduced to avoid potential web application vulnerabilities and attacks.</p>
-	
-	<h2> Completed Course Assignments </h2>
-	<h3> Lab 0 </h3>
-	<p>In this lab, I installed Ubuntu 22.04 and software to go with it including Apache and git. I made sure that the Apache web server was working correctly. I then cloned both the course repository and my private repository to my VM using SSH keys. I edited my repo README and then pushed the changes to GitHub.</p>
-	<h3> Lab 1 </h3>
-	<p>In this lab, became familiar with the Wireshark program, understanding HTTP requests and responses. I also began basic web application programming. I created a helloworld and an HTML CGI application using C. I then did the same thing using PHP. Finally, used Wireshark and curl to better understand HTTP requests.</p>
-	<h3> Lab 2 </h3>
-	<p>In this lab, I created an HTML file where I did multiple exercises. I created a simple web page including a headshot and a form section with user inputs and buttons. I then learned how to incorporate JavaScript within HTML using script tags. After this, I learned about Ajax, CSS, jQuery and how to use Ajax and fetch for Web API integration.</p>
-	<h3> Hackathon 1 </h3>
-	<p>In this Hackathon, I had to figure how to make a JavaScript alert execute for 7 different levels of a webpage input. This involved injecting JS code in the URL, input box, and using external files. I then altered files from previous labs to validate and encode any inputs.</p>
-	
-</div>
+<body class="waph-page">
+
+	<header id="header" class="header d-flex flex-column justify-content-center">
+		<i class="header-toggle d-xl-none bi bi-list"></i>
+			<nav id="navmenu" class="navmenu">
+				<ul>
+					<li><a href="#title" class="active"><i class="bi bi-journal-text navicon"></i><span>WAPH</span></a></li>
+					<li><a href="#course-information"><i class="bi bi-info-circle navicon"></i><span>Course Information</span></a></li>
+					<li><a href="#assignments"><i class="bi bi-file-earmark-check navicon"></i><span>Assignments</span></a></li>
+					<li><a href="index.html" class="active"><i class="bi bi-house navicon"></i><span>Home Page</span></a></li>
+				</ul>
+			</nav>
+	</header>
+
+	<div class="main">
+
+		<section id="title" class="title section">
+			<div class="container" data-aos="zoom-out">
+				<div class="row justify-content-center">
+					<div class="col-lg-9 text-center">
+						<h1>Web Application Programming and Hacking</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="course-information" class="course-information section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Course Information</h2>
+				<p>In this course, students will study basic web application development with front-end
+					(HTML5, JavaScript, CSS) and back-end (PHP/MySQL). Web application vulnerabilities and attacks will be introduced and explored with hands-on exercises on the range. Secure programming principles and
+					practices will be introduced to avoid potential web application vulnerabilities and attacks.</p>
+			</div>
+			<div class="container" data-aos="fade-up" data-aos-delay="100">	
+				<div class="instructor text-center" >
+					<h3>Instructor</h3>
+					<h4>Dr. Phu Phung</h4>
+				</div>
+			</div>
+		</section>
+
+		<section id="assignments" class="assignments section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Completed Course Assignments</h2>
+			</div>
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="labs" data-aos="fade-up" data-aos-delay="200">
+					<h3>Labs</h3>
+					<div class="assignment" data-aos="fade-up" data-aos-delay="300">
+						<h4>Lab 0</h4>
+						<p>In this lab, I installed Ubuntu 22.04 and software to go with it including Apache and git. I then cloned both the course repository and my private repository to my VM using SSH keys. I edited my repo README and then pushed the changes to GitHub.</p>
+					</div>
+					<div class="assignment" data-aos="fade-up" data-aos-delay="400">
+						<h4>Lab 1</h4>
+						<p>In this lab, I became familiar with the Wireshark program, understanding HTTP requests and responses. I also began basic web application programming. I created a helloworld and an HTML CGI application using C. I then did the same thing using PHP. Finally, used Wireshark and curl to better understand HTTP requests.</p>
+					</div>
+					<div class="assignment" data-aos="fade-up" data-aos-delay="500">
+						<h4>Lab 2</h4>
+						<p>In this lab, I created an HTML file where I did multiple exercises. I created a simple web page including a headshot and a form section with user inputs and buttons. I then learned how to incorporate JavaScript within HTML using script tags. After this, I learned about Ajax, CSS, jQuery and how to use Ajax and fetch for Web API integration.</p>
+					</div>
+				</div>
+				<div class="hackathons" data-aos="fade-up" data-aos-delay="600">
+					<h3>Hackathons</h3>
+					<div class="assignment" data-aos="fade-up" data-aos-delay="700">
+						<h4>Hackathon 1</h4>
+						<p>In this Hackathon, I had to figure how to make a JavaScript alert execute for 7 different levels of a webpage input. This involved injecting JS code in the URL, input box, and using external files. I then altered files from previous labs to validate and encode any inputs.</p>
+					</div>
+				</div>
+				<div class="projects" data-aos="fade-up" data-aos-delay="800">
+					<h3>Projects</h3>
+					<div class="assignment" data-aos="fade-up" data-aos-delay="900">
+						<h4>Project 1</h4>
+						<p>In this project, I created and deployed a personal website on github.io. This involved using Bootstrap and including JavaScript code, JQuery, and public Web APIs.</p>
+					</div>
+				</div>
+		</section>
+
+		<footer id="footer" class="footer position-relative">
+			<div class="container">
+				<h3 class="sitename">Simon Feist</h3>
+				<div class="container">
+					<div class="copyright">
+						<span>Copyright</span> <strong class="px-1 sitename">Simon Feist</strong> <span>All Rights Reserved</span>
+					</div>
+					<div class="credits">
+						Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+					</div>
+			</div>
+			</div>
+		</footer>
+
+		<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+		<div id="preloader"></div>
+
+		<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/vendor/php-email-form/validate.js"></script>
+		<script src="assets/vendor/aos/aos.js"></script>
+		<script src="assets/vendor/typed.js/typed.umd.js"></script>
+		<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+		<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+		<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+		<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+		<script src="assets/js/main.js"></script>
+	</div>
 </body>
 </html>
