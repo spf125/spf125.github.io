@@ -8,7 +8,7 @@
 
 **Email**: feistsp@ucmail.uc.edu
 
-![Simon's headshot](../../images/Headshot.jpg)
+![Simon's headshot](images/Headshot.jpg)
 
 # Project 1
 ## Overview
@@ -23,7 +23,7 @@ Using github.io, I created an index.html file that similar to the HTML file crea
 
 ### CSS template (Bootstrap)
 
-To implement Bootstrap, I found a template from [BootstrapMade](https://bootstrapmade.com/]. I then incorporated this into my current index.html file.
+To implement Bootstrap, I found a template from [BootstrapMade](https://bootstrapmade.com/). I then incorporated this into my current index.html file.
 
 ### Page Tracker
 
@@ -51,6 +51,10 @@ To implement Bootstrap, I found a template from [BootstrapMade](https://bootstra
 
 #### jokeAPI
 
+To implement the joke of the day API, I used JQuery. JQuery gets the JSON from the webpage `https://v2.jokeapi.dev/joke/Any`. I then check if it's a two part joke or a single, and then put this response at the joke ID. I use setInterval to call the function to get the joke of the day every 1 minute.
+
 #### API with Graphic
+
+Similar to the joke of the day, this API is also implemented with JQuery. However, since my access to `https://xkcd.com/info.0.json` is blocked CORs, I have to use a CORS proxy, `https://api.allorigins.win/get?url=`, to send the request. 
 
 ### JavaScript Cookies
