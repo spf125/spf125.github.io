@@ -29,7 +29,7 @@ To implement Bootstrap, I found a template from [BootstrapMade](https://bootstra
 
 ### Page Tracker
 
-To add a page tracker to my website, I decided to use `https://analytics.withgoogle.com/`. This involved creating an account and creating a property for the website. I then had to add the google tag inside my all of my HTML files in the website which is in the form of a JS script. 
+To add a page tracker to my website, I decided to use [https://analytics.withgoogle.com](https://analytics.withgoogle.com). This involved creating an account and creating a property for the website. I then had to add the google tag inside my all of my HTML files in the website which is in the form of a JS script. 
 
 ### Basic JavaScript code (JQuery and React)
 
@@ -39,7 +39,7 @@ This feature is implemented by using JavaScript code within the `index.html` fil
 
 #### Analog Clock
 
-The analog clock is implemented by using an external JavaScript file from `https://waph-uc.github.io/clock.js`. By including this script and using a canvas tag in the `index.html` file, I was able to create the analog clock by calling the different JS functions within the external `clock.js` file.
+The analog clock is implemented by using an external JavaScript file from [https://waph-uc.github.io/clock.js](https://waph-uc.github.io/clock.js). By including this script and using a canvas tag in the `index.html` file, I was able to create the analog clock by calling the different JS functions within the external `clock.js` file.
 
 #### Show/Hide Email
 
@@ -53,11 +53,11 @@ For the final feature, I implemented a counter that increments with a button pre
 
 #### jokeAPI
 
-To implement the joke of the day API, I used JQuery. JQuery gets the JSON from the webpage `https://v2.jokeapi.dev/joke/Any`. I then check if it's a two part joke or a single, and then put this response at the joke ID. I use setInterval to call the function to get the joke of the day every 1 minute.
+To implement the joke of the day API, I used JQuery. JQuery gets the JSON from the webpage [https://v2.jokeapi.dev/joke/Any](https://v2.jokeapi.dev/joke/Any). I then check if it's a two part joke or a single, and then put this response at the joke ID. I use setInterval to call the function to get the joke of the day every 1 minute.
 
 #### API with Graphic
 
-Similar to the joke of the day, this API is also implemented with JQuery. However, since my access to `https://xkcd.com/info.0.json` is blocked CORs, I had to use an external tool, `https://api.allorigins.win/get?url=`, to pull the contents from the API. 
+Similar to the joke of the day, this API is also implemented with JQuery. However, since my access to [https://xkcd.com/info.0.json](https://xkcd.com/info.0.json) is blocked CORs, I had to use an external tool, `https://api.allorigins.win/get?url=`, to pull the contents from the API. 
 
 ### JavaScript Cookies
 
