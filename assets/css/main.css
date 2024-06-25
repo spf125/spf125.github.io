@@ -722,3 +722,28 @@ section,
 .close-btn:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 20%);;
 }
+
+/*--------------------------------------------------------------
+# React Section
+--------------------------------------------------------------*/
+
+.react .react-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.react #react-counter h3 {
+  font-size: 24px;
+  color: var(--default-color);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.react #react-counter p {
+  font-size: 20px;
+  color: var(--default-color);
+  text-align: center;
+  margin-bottom: 20px;
+}

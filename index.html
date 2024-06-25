@@ -19,6 +19,13 @@
 
 	<!-- Main CSS File -->
 	<link href="assets/css/main.css" rel="stylesheet">
+	
+	<!-- React -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	
+
 	<style>
 		#response {
 			background-color: #0563bbd0;
@@ -63,6 +70,7 @@
 					<li><a href="#twoclocks"><i class="bi bi-clock navicon"></i><span>Clocks</span></a></li>
 					<li><a href="#formsandJS"><i class="bi bi-pencil-square navicon"></i><span>Forms</span></a></li>
 					<li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
+					<li><a href="#react"><i class="bi bi-code-slash navicon"></i><span>React</span></a></li>
 					<li><a href="waph.html"><i class="bi bi-box-arrow-up-right navicon"></i><span>WAPH</span></a></li>
 				</ul>
 			</nav>
@@ -311,6 +319,35 @@
 					</div>
 				</div>
 			</div>
+		</section>
+
+		<section id="react" class="react section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>React</h2>
+				<p>React component that uses basic JS to display a counter.</p>
+			</div>
+
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div id="react-counter" class="react-counter"></div>
+				<script type="text/babel">
+					class Counter extends React.Component {
+						constructor(props) {
+							super(props);
+							this.state = {count: 0};
+						}
+						render() {
+							return (
+								<div>
+									<h3>Counter</h3>
+									<p>Count: {this.state.count}</p>
+									<button class="btn btn-primary" onClick={() => this.setState({count: this.state.count - 1})}>Decrement</button>
+									<button class="btn btn-primary" onClick={() => this.setState({count: this.state.count + 1})}>Increment</button>
+								</div>
+							);
+						}
+					}
+					ReactDOM.render(<Counter />, document.getElementById('react-counter'));
+				</script>
 		</section>
 
 		<footer id="footer" class="footer position-relative">
