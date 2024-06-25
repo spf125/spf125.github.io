@@ -350,14 +350,15 @@
 
 			function XKCDComic() {
 				const corsProxy = "https://api.allorigins.win/get?url=";
-				const xkcdUrl = "https://xkcd.com/info.0.json";
-				$.get(corsProxy + xkcdUrl, function(result) {
+				const xkcdUrl = encodeURIComponent("https://xkcd.com/info.0.json");
+				$.getJSON(corsProxy + xkcdUrl, function(data) {
+					var result = JSON.parse(data.contents);
 					if (!result || !result.img || !result.title) return;
 					$("#xkcd-comic").attr("src", result.img);
 					$("#xkcd-title").text(result.title);
 				});
 			}
-
+			
 			XKCDComic();
 			jokeOfTheDay();
 
