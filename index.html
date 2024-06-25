@@ -221,7 +221,7 @@
 
 						<div class="forms">
 							<h4>Form with an HTTP GET Request</h4>
-							<form action="/echo.php" method="GET" class="form-inline">
+							<form action="echo.php" method="GET" class="form-inline">
 								<div class="form-group mb-2">
 									<label for="HTTPGETRequest" class="sr-only">Your input:</label> 
 									<input type="text" class="form-control" id="HTTPGETRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
@@ -230,7 +230,7 @@
 							</form>
 
 							<h4>Form with an HTTP POST Request</h4>
-							<form action="/echo.php" method="POST" name="echo_post" class="form-inline">
+							<form action="echo.php" method="POST" name="echo_post" class="form-inline">
 								<div class="form-group mb-2">
 									<label for="HTTPPOSTRequest" class="sr-only">Your input:</label> 
 									<input type="text" class="form-control" id="HTTPPOSTRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
@@ -397,14 +397,14 @@
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					console.log("Received data="+xhttp.responseText);
-					document.getElementById("response").innerText = "Response from server: " + encodeInput(xhttp.responseText);
+					document.getElementById("response").innerText = "Response from server: " + xhttp.responseText;
 					//code to show the data
 				}
 			}
 			xhttp.open("GET", "echo.php?data="+encodeInput(input), true);
 			//code to create an Ajax request
 			xhttp.send(); // code to send the request
-			document.getElementById("data").value="";
+			document.getElementById("AjaxRequests").value="";
 			}
 
 			function jQueryAjax() {
@@ -426,7 +426,7 @@
 						$("#response").html("Response from server: " + result);
 					}
 				);
-				$("#data").val("");
+				$("#AjaxRequests").val("");
 			}
 			
 			function JokeOfTheDay() {
