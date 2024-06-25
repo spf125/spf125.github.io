@@ -59,14 +59,66 @@
 			<nav id="navmenu" class="navmenu">
 				<ul>
 					<li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
-					<li><a href="#jokeoftheday"><i class="bi bi-emoji-laughing navicon"></i><span>Joke</span></a></li>
-					<li><a href="#clocks"><i class="bi bi-clock navicon"></i><span>Clocks</span></a></li>
+					<li><a href="#webapi"><i class="bi bi-emoji-laughing navicon"></i><span>Web API</span></a></li>
+					<li><a href="#twoclocks"><i class="bi bi-clock navicon"></i><span>Clocks</span></a></li>
 					<li><a href="#formsandJS"><i class="bi bi-pencil-square navicon"></i><span>Forms</span></a></li>
 					<li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
 					<li><a href="waph.html"><i class="bi bi-box-arrow-up-right navicon"></i><span>WAPH</span></a></li>
 				</ul>
 			</nav>
 	</header>
+
+	<div id="cookie-banner" class="banner">
+		<span id="cookie-response"></span>
+		<button class="close-btn" onclick="CloseBanner()">Thanks!</button>
+
+		<script>
+
+			function SetCookie(cookieName, cookieValue, expirationDays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (expirationDays*24*60*60*1000));
+				let expires = "expires="+ d.toUTCString();
+				document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+			}
+	
+			function GetCookie(cookieName) {
+				let name = cookieName + "=";
+				let ca = document.cookie.split(';');
+				for(let i = 0; i <ca.length; i++) {
+					let c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+	
+			function CheckCookie() {
+				const lastVisit = GetCookie("lastVisit");
+  				const headerToggleBtn = document.querySelector('.header .header-toggle');
+				if (lastVisit == "") {
+					document.getElementById("cookie-response").innerHTML = "Welcome to my homepage!";
+				} else {
+					document.getElementById("cookie-response").innerHTML = "Welcome back! Your last visit was " + lastVisit;
+				}
+				document.getElementById("cookie-banner").classList.add("show");
+  				headerToggleBtn.classList.add("header-toggle-banner");
+				SetCookie("lastVisit", new Date(), 365);
+			}
+	
+			function CloseBanner() {
+				document.getElementById('cookie-banner').classList.remove('show');
+				document.querySelector('.header .header-toggle').classList.remove('header-toggle-banner');
+			}
+			CheckCookie();
+	
+		</script>
+	</div>
+
+	
 
 	<main class="main">
 		<section id="hero" class="hero section">
@@ -385,42 +437,6 @@
 				}
 				$("#response").html("Hi " + encodeInput(name) + ", your age should be " + encodeInput(result.age.toString()));
 			}
-
-			function SetCookie(cookieName, cookieValue, expirationDays) {
-				const d = new Date();
-				d.setTime(d.getTime() + (expirationDays*24*60*60*1000));
-				let expires = "expires="+ d.toUTCString();
-				document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-			}
-
-			function GetCookie(cookieName) {
-				let name = cookieName + "=";
-				let ca = document.cookie.split(';');
-				for(let i = 0; i <ca.length; i++) {
-					let c = ca[i];
-					while (c.charAt(0) == ' ') {
-						c = c.substring(1);
-					}
-					if (c.indexOf(name) == 0) {
-						return c.substring(name.length, c.length);
-					}
-				}
-				return "";
-			}
-
-			function CheckCookie() {
-				const lastVisit = GetCookie("lastVisit");
-				if (lastVisit == "") {
-					alert("Welcome to my homepage!");
-					SetCookie("lastVisit", new Date(), 365);
-					alert("Cookie created: " + GetCookie("lastVisit"));
-				} else {
-					alert("Welcome back! Your last visit was" + lastVisit);
-					SetCookie("lastVisit", new Date(), 365);
-				}
-			}
-
-			CheckCookie();
 
 		</script>
 	</main>
