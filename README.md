@@ -27,7 +27,7 @@ To implement Bootstrap, I found a template from [BootstrapMade](https://bootstra
 
 ### Page Tracker
 
-
+To add a page tracker to my website, I decided to use `https://analytics.withgoogle.com/`. This involved creating an account and creating a property for the website. I then had to add the google tag inside my all of my HTML files in the website which is in the form of a JS script. 
 
 ### Basic JavaScript code (JQuery and one more open-source JS framework)
 
@@ -58,3 +58,5 @@ To implement the joke of the day API, I used JQuery. JQuery gets the JSON from t
 Similar to the joke of the day, this API is also implemented with JQuery. However, since my access to `https://xkcd.com/info.0.json` is blocked CORs, I have to use a CORS proxy, `https://api.allorigins.win/get?url=`, to send the request. 
 
 ### JavaScript Cookies
+
+
