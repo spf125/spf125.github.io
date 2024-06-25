@@ -33,15 +33,15 @@ To implement Bootstrap, I found a template from [BootstrapMade](https://bootstra
 
 #### Digital Clock
 
-
+This feature is implemented by using JavaScript code within the `index.html` file. The function `displayTime()` is called every 500ms which sets the current time using the `Data()` function. This is placed on the webpage using the `getElementById()` function.
 
 #### Analog Clock
 
-
+The analog clock is implemented by using an external JavaScript file from `https://waph-uc.github.io/clock.js`. By including this script and using a canvas tag in the `index.html` file, I was able to create the analog clock by calling the different JS functions within the external `clock.js` file.
 
 #### Show/Hide Email
 
-
+To implement this feature, I created a JavaScript file titled `email.js` that has a function called `showhideEmail()`. This function either shows or hides email when the text is clicked. This is then placed in a `<div>` with the onclick attribute calling the `showhideEmail()` function.
 
 #### (One more functionality of choice)
 
