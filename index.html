@@ -340,7 +340,7 @@
 				$("#data").val("");
 			}
 			
-			function jokeOfTheDay() {
+			function JokeOfTheDay() {
 				$.get("https://v2.jokeapi.dev/joke/Any",
 					function(result) {
 						if (result.error == false) {
@@ -371,9 +371,9 @@
 			}
 			
 			XKCDComic();
-			jokeOfTheDay();
+			JokeOfTheDay();
 
-			setInterval(jokeOfTheDay, 60000);
+			setInterval(JokeOfTheDay, 60000);
 
 			async function guessAge(name) {
 				if (name.length == 0) return;
@@ -385,6 +385,42 @@
 				}
 				$("#response").html("Hi " + encodeInput(name) + ", your age should be " + encodeInput(result.age.toString()));
 			}
+
+			function SetCookie(cookieName, cookieValue, expirationDays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (expirationDays*24*60*60*1000));
+				let expires = "expires="+ d.toUTCString();
+				document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+			}
+
+			function GetCookie(cookieName) {
+				let name = cookieName + "=";
+				let ca = document.cookie.split(';');
+				for(let i = 0; i <ca.length; i++) {
+					let c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+
+			function CheckCookie() {
+				const lastVisit = GetCookie("lastVisit");
+				if (lastVisit == "") {
+					alert("Welcome to my homepage!");
+					SetCookie("lastVisit", new Date(), 365);
+					alert("Cookie created: " + GetCookie("lastVisit"));
+				} else {
+					alert("Welcome back! Your last visit was" + lastVisit);
+					SetCookie("lastVisit", new Date(), 365);
+				}
+			}
+
+			CheckCookie();
 
 		</script>
 	</main>
