@@ -32,6 +32,9 @@
 			border-radius: 10px;
 			color: white;
 			width: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		.clock-wrapper {
@@ -152,7 +155,7 @@
 				<h2>Web API</h2>
 				<p>Web API calls to get a joke of the day and displays a comic.</p>
 				<b>
-					Dislaimer: The public/third-party services generate the generated contents below. I am not responsible for their contents.
+					Dislaimer: Public/third-party services generate the generated contents below. I am not responsible for their contents.
 				</b>
 			</div>
 
@@ -172,8 +175,21 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="guess-age-title">
+						<h3>Guess Age Based on Name</h3>
+					</div>
+					<div class="col-lg-4">
+						<label for="AjaxRequests" class="sr-only">Your name:</label>
+						<input type="text" id="AjaxRequests" class="form-control" placeholder="Your name...">
+					</div>
+					<div class="col-lg-4">
+						<button class="btn btn-primary" type="button" onclick="guessAge($('#AjaxRequests').val())">Guess Age</button>
+					</div>
+					<div class="col-lg-4" id="response"></div>
+				</div>
 			</div>
-		</section>
 		
 		<section id="twoclocks" class="twoclocks section">
 			<div class="container section-title" data-aos="fade-up">
@@ -205,64 +221,6 @@
 							drawTime(ctx, radius);
 						}
 					</script>
-				</div>
-			</div>
-		</section>
-		
-		<section id="formsandJS" class="formsandJS section">
-			<div class="container section-title" data-aos="fade-up">
-				<h2>Forms and JavaScript</h2>
-				<p>Forms and JavaScript code including the use of JQuery.</p>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-						<h3>Interaction with forms</h3>
-
-						<div class="forms">
-							<h4>Form with an HTTP GET Request</h4>
-							<form action="echo.php" method="GET" class="form-inline">
-								<div class="form-group mb-2">
-									<label for="HTTPGETRequest" class="sr-only">Your input:</label> 
-									<input type="text" class="form-control" id="HTTPGETRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
-								</div>
-								<button type="submit" class="btn btn-primary mb-2 ml-2">Submit</button>
-							</form>
-
-							<h4>Form with an HTTP POST Request</h4>
-							<form action="echo.php" method="POST" name="echo_post" class="form-inline">
-								<div class="form-group mb-2">
-									<label for="HTTPPOSTRequest" class="sr-only">Your input:</label> 
-									<input type="text" class="form-control" id="HTTPPOSTRequest" name="data" placeholder="Your Input" onkeyup="console.log('You have pressed a key')">
-								</div>
-								<button type="submit" class="btn btn-primary mb-2 ml-2">Submit</button>
-							</form>
-
-							<h4>Ajax requests</h4>
-							<form class="form-inline">
-								<div class="form-group mb-2">
-									<label for="AjaxRequests" class="sr-only">Your input:</label>
-									<input type="text" onkeypress="console.log('You have pressed a key')" id="AjaxRequests" class="form-control" placeholder="Your Input">
-								</div>
-								<div class="col-lg-6 d-flex flex-wrap align-items-start justify-content-end">
-									<button class="btn btn-primary col-6" type="button"  onclick="getEcho()">Ajax Echo</button>
-									<button class="btn btn-primary col-6" type="button" onclick="guessAge($('#AjaxRequests').val())">guess Age</button>
-									<button class="btn btn-primary col-6" type="button" onclick="jQueryAjax()">jQuery Ajax GET Echo</button>
-									<button class="btn btn-primary col-6" type="button" onclick="jQueryAjaxPost()">jQuery Ajax POST Echo</button>
-								</div>
-							</form>
-						</div>
-						<div class="text-center" id="response">
-						</div>
-					</div>
-
-					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-						<div class="JS">
-							<h3>Experiments with JavaScript code</h3>
-							<h4>Inlined JavaScript</h4>
-							<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -386,47 +344,6 @@
 				const encoded = document.createElement('div');
 				encoded.innerText = input;
 				return encoded.innerHTML;
-			}
-
-			function getEcho() {
-			var input = document.getElementById("AjaxRequests").value;
-			if (input.length == 0) {
-				return;
-			}
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					console.log("Received data="+xhttp.responseText);
-					document.getElementById("response").innerText = "Response from server: " + xhttp.responseText;
-					//code to show the data
-				}
-			}
-			xhttp.open("GET", "echo.php?data="+encodeInput(input), true);
-			//code to create an Ajax request
-			xhttp.send(); // code to send the request
-			document.getElementById("AjaxRequests").value="";
-			}
-
-			function jQueryAjax() {
-				var input = $("#AjaxRequests").val();
-				if (input.length == 0) return;
-				$.get("echo.php?data="+input,
-					function(result) {
-						$("#response").html("Response from server: " + result);
-					}
-				);
-				$("#AjaxRequests").val("");
-			}
-
-			function jQueryAjaxPost() {
-				var input = $("#AjaxRequests").val();
-				if (input.length == 0) return;
-				$.post("echo.php", {data: input},
-					function( result ) {
-						$("#response").html("Response from server: " + result);
-					}
-				);
-				$("#AjaxRequests").val("");
 			}
 			
 			function JokeOfTheDay() {
